@@ -3,19 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "antd": "^4.23.6",
+    "antd": "^4.24.3",
+    "craco-less": "^2.0.0",
+    "jszip": "^3.10.1",
     "react": "^18.2.0",
+    "react-document-title": "^2.0.3",
     "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.5.2",
+    "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,5 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.0.0-alpha.9",
+    "craco": "^0.0.3",
+    "less": "^4.1.3",
+    "webpack-bundle-analyzer": "^4.8.0"
   }
 }

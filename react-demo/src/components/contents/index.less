@@ -1,0 +1,21 @@
+@import '../../assets/css/variables.less';
+
+.contents-wrapper {
+    .flex-center();
+    margin: 10px 0 10px 0;
+    width: 100%;
+}
+
+.contents {
+    .flex-center();
+    height: 50px;
+    width: 24%;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.85);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.85) 90%);
+    transition: background-color 0.3s ease;
+    &:hover{
+        background-color: #00796B;
+        cursor: pointer;
+    }
+}
