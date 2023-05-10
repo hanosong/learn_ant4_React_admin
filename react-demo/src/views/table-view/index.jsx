@@ -6,7 +6,7 @@ import { colunmsDefaultConfig } from "@/utils/columnsDefaultConfig";
 import { exportToXls } from "@/utils/exportToXls";
 import { exportToExcelXlsx } from "@/utils/exportToXlsx";
 import { formLayoutConfig } from "@/utils/formLayoutConfig";
-import {fileToJson} from "@/utils/format";
+import { fileToJson } from "@/utils/format";
 import { validateAttachmentInfo } from "@/utils/validataAttachments";
 
 import "./index.less";
@@ -14,16 +14,15 @@ import "./index.less";
 export default memo(() => {
   const [form] = Form.useForm();
   const Item = Form.Item;
-  // const [dataSource, setDataSource] = useState([]);
   const [button, switchButton] = useState(null);
   // 定义用于存储解析后Excel数据的状态
   const [excelData, setExcelData] = useState({
-    columns:[],
+    columns: [],
     dataSource: [],
   });
 
   const exportExcelToXlsHandle = () => {
-    const{columns, dataSource} = excelData;
+    const { columns, dataSource } = excelData;
     exportToXls(columns, dataSource);
   };
 
@@ -31,42 +30,46 @@ export default memo(() => {
     switchButton(toggleButton(v));
   };
 
-  const handleExcelUpload = ({file}) => {
-    const {name, originFileObj} = file;
+  const handleExcelUpload = ({ file }) => {
+    const { name, originFileObj } = file;
     if (originFileObj) {
       const fileName = name;
-      const fileArr = fileName.split('.');
+      const fileArr = fileName.split(".");
       const fileSuffix = fileArr[fileArr.length - 1];
-      if (fileSuffix === 'xlsx' || fileSuffix === 'xls') {
+      if (fileSuffix === "xlsx" || fileSuffix === "xls") {
         fileToJson(originFileObj, (sheets) => {
           // 处理表格数据：
-          const {list:data} = sheets[0];
-          const columns = data[0].map((title) => ({
-            title, // 表头的名称
-            dataIndex: title, // 对应的数据源中的字段名
-          })).map(item => (item = { ...colunmsDefaultConfig, ...item }));
+          const { list: data } = sheets[0];
+          const columns = data[0]
+            .map((title) => ({
+              title, // 表头的名称
+              dataIndex: title, // 对应的数据源中的字段名
+            }))
+            .map((item) => (item = { ...colunmsDefaultConfig, ...item }));
           const dataSource = data.slice(1).map((row) => ({
             key: row[0], // 使用第一列数据作为唯一标识符
-            ...Object.fromEntries(data[0].map((title, index) => [title, row[index]])),
+            ...Object.fromEntries(
+              data[0].map((title, index) => [title, row[index]])
+            ),
           }));
 
           setExcelData((excelData) => ({
             ...excelData,
             columns,
             dataSource,
-          }))
+          }));
 
           console.group("导入后的数据");
-          console.log('获取到的表格数据', sheets);
-          console.log('columns', columns);
-          console.log('dataSource', dataSource);
+          console.log("获取到的表格数据", sheets);
+          console.log("columns", columns);
+          console.log("dataSource", dataSource);
           console.groupEnd("导入后的数据");
         });
       } else {
-        console.log('不支持该格式的解析');
+        console.log("不支持该格式的解析");
       }
     } else {
-      console.log('请选择文件上传');
+      console.log("请选择文件上传");
     }
   };
 
@@ -87,13 +90,11 @@ export default memo(() => {
     },
   };
 
-  
-
   const toggleButton = (type = "11") => {
     switch (type) {
       case "1":
-        case "11":
-        const {dataSource, columns} = excelData;
+      case "11":
+        const { dataSource, columns } = excelData;
         return (
           <Button
             key="export-xlsx"
@@ -118,12 +119,8 @@ export default memo(() => {
             <Button>导入Excel</Button>
           </Upload>
         );
-      default:
-        break;
     }
   };
-
-  
 
   let treeData = [
     {
@@ -152,9 +149,11 @@ export default memo(() => {
   return (
     <div>
       <Form form={form} {...formLayoutConfig.formItemLayout}>
-        {/* <Table columns={excelData.columns} dataSource={excelData.dataSource} /> */}
-        <ExportTable columns={excelData.columns} dataSource={excelData.dataSource} />
-        <Row className="" type="flex" justify="center">
+        <ExportTable
+          columns={excelData.columns}
+          dataSource={excelData.dataSource}
+        />
+        <Row className="" type="flex" justify="space-between">
           <Col span={12}>
             <Item name="perForm" label="执行操作">
               <TreeSelect
@@ -174,7 +173,9 @@ export default memo(() => {
               />
             </Item>
           </Col>
-          <Col span={12}>{button}</Col>
+          <Col span={12} style={{ display: "flex", justifyContent: "center" }}>
+            {button}
+          </Col>
         </Row>
       </Form>
     </div>
