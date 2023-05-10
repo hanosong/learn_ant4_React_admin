@@ -1,6 +1,6 @@
 import React, { memo,useState } from 'react'
 import {Form, Tooltip, Divider, Button, Spin,Input} from 'antd';
-import  Icon from '@ant-design/icons';
+import  {HeartTwoTone, SmileTwoTone} from '@ant-design/icons';
 import DocumentTitle from "react-document-title"; // 设置自己的网页标题
 import './index.less'
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ export default memo(() => {
           <Spin spinning={loading} tip="登录中...">
             <Form.Item
               name="username"
-              label="用户名"
+              label="用户"
               rules ={[
                 {
                   required: true,
@@ -45,7 +45,9 @@ export default memo(() => {
               > */}
                   <Input
                     prefix={
-                      <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                      <SmileTwoTone
+                      twoToneColor="#00796B"
+                      />
                     }
                     placeholder="用户名"
                     // onBlur={handlerUserOnBlur}
@@ -71,10 +73,8 @@ export default memo(() => {
               > */}
                   <Input
                     prefix={
-                      <Icon
-                        type="lock"
-                        style={{ color: "rgba(0,0,0,.25)" }}
-                        //  onBlur={}
+                      <HeartTwoTone
+                      twoToneColor="#eb2f96"
                       />
                     }
                     type="password"
