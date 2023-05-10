@@ -1,13 +1,16 @@
 import React, { memo, useEffect, useState } from "react";
 import { Button, Table, Form, Row, Col, TreeSelect, Upload, Modal } from "antd";
-import "./index.less";
+import ExportTable from "@/hoc/exportTable";
+
 import { colunmsDefaultConfig } from "@/utils/columnsDefaultConfig";
 import { exportToXls } from "@/utils/exportToXls";
 import { exportToExcelXlsx } from "@/utils/exportToXlsx";
 import { formLayoutConfig } from "@/utils/formLayoutConfig";
 import {fileToJson} from "@/utils/format";
 import { validateAttachmentInfo } from "@/utils/validataAttachments";
-import ExportTable from "@/hoc/exportTable";
+
+import "./index.less";
+
 export default memo(() => {
   const [form] = Form.useForm();
   const Item = Form.Item;
