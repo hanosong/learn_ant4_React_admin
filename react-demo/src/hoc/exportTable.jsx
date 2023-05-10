@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { Table } from 'antd';
 import { colunmsDefaultConfig } from "@/utils/columnsDefaultConfig";
 import { tableDataSource } from "@/assets/data/table-data";
@@ -25,11 +25,6 @@ let columns = [
 export default memo((props) => {
     const [_columns, setColumns] = useState(columns);
     const [_dataSource, setDataSource] = useState(tableDataSource);
-    useEffect(() => {
-        console.log(_columns, '??');
-        
-    },[])
-    console.log(columns)
   return (
    <Table
    {...props}

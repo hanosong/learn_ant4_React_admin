@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import { Button, Table, Form, Row, Col, TreeSelect, Upload, Modal } from "antd";
 import ExportTable from "@/hoc/exportTable";
 
@@ -21,14 +21,6 @@ export default memo(() => {
     columns:[],
     dataSource: [],
   });
-  useEffect(() => {
-    // setDataSource(tableDataSource);
-    // setExcelData((excelData) => ({
-    //   ...excelData,
-    //   columns,
-    //   dataSource: tableDataSource,
-    // }))
-  }, []);
 
   const exportExcelToXlsHandle = () => {
     const{columns, dataSource} = excelData;
