@@ -9,7 +9,7 @@ export default memo(() => {
   const nav = useNavigate();
   const [loading, setLoading] = useState(false);
   const handleSubmit = () => {
-    nav('/table');
+    nav('/home');
   }
   return (
     <DocumentTitle title={"用户登录"}>
