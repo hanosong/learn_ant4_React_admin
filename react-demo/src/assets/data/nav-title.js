@@ -1,18 +1,18 @@
 const navTitle = [
     {
-        title: '表单',
+        title: '成员项',
         meta: 'form'
     },
     {
-        title: '表格',
+        title: '作息表',
         meta: 'table'
     },
     {
-        title: '富文本',
+        title: '富文本(计划)',
         meta: 'richText'
     },
     {
-        title: '其他',
+        title: 'echarts展示',
         meta: 'other'
     }
 ] 

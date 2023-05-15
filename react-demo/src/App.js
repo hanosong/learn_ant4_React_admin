@@ -4,8 +4,6 @@ import routes from '@/router/index.js';
 import TopEggRoll from "./components/top-egg-roll";
 import Contents from './components/contents/index';
 import './App.less';
-import MyRefTest from "./my_ref_test";
-import { Button } from "antd";
 
 const App = memo(() => {
   return (
@@ -16,7 +14,7 @@ const App = memo(() => {
       <nav>
         <Contents/>
       </nav>
-      <section>
+      <section className="router-wrapper">
         {useRoutes(routes)}
       </section>
       <footer style={{height: "20vh", marginTop: "10px"}}>
