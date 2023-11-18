@@ -1,19 +1,30 @@
-import React, { memo,useState } from 'react'
+import React, { memo,useEffect,useState } from 'react'
 import {Form, Tooltip, Divider, Button, Spin,Input} from 'antd';
 import  {HeartTwoTone, SmileTwoTone} from '@ant-design/icons';
 import DocumentTitle from "react-document-title"; // 设置自己的网页标题
+import { setUserInfoAction } from '@/store/actionCreator';
 import './index.less'
 import { useNavigate } from 'react-router-dom';
-export default memo(() => {
+import { connect } from 'react-redux';
+
+const LoginView = memo(() => {
   const [form] = Form.useForm();
   const nav = useNavigate();
   const [loading, setLoading] = useState(false);
-  const handleSubmit = () => {
+  const [num, setNum] = useState(0)
+  /**
+   * @description 这里需要把用户信息塞到store中，未做，在想用不用rtk
+   * @param {*} v 
+   */
+  const handleSubmit = (v) => {
+    console.log(v,'v')
     nav('/home');
   }
+
   return (
     <DocumentTitle title={"用户登录"}>
       <div className="login-container">
+        {num}
         <Form 
           form = {form} 
           onFinish={handleSubmit} 
@@ -105,4 +116,9 @@ export default memo(() => {
     </DocumentTitle>
   )
 })
+
+const mapDispatchToProps = (dispatch) => ({
+  setUserInfoHandle: (userInfo) => dispatch(setUserInfoAction(userInfo)),
+})
+export default connect(null, mapDispatchToProps)(LoginView);
 

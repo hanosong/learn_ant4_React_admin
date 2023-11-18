@@ -1,17 +1,26 @@
 @import '../../assets/css/variables.less';
 
 .content-wrapper{
-    .flex-center();
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    >.logging-user{
+        height: 5%
+    }
 }
 
 .inner-wrapper {
-    .flex-center();
-    justify-content: space-between;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-around; */
+    /* justify-content: space-between; */
     width: 100%;
+    height: 100%;
     >.date-wrapper{
-        width: 40%;
+        width: 30%;
         >.react-calendar{
             border: none;
             >.react-calendar__navigation button{
@@ -23,12 +32,13 @@
         }
     }
 }
+.week-day-wrapper{
+    display: flex;
+    width: 100%;
+}
 .react-calendar__tile--active {
     background: #00796B !important;
 }
 .react-calendar__month-view__days__day--weekend {
     color: #8FBC8F !important;
-}
-.logger-wrapper {
-    .flex-center();;
 }
