@@ -11,7 +11,6 @@ const LoginView = memo(() => {
   const [form] = Form.useForm();
   const nav = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [num, setNum] = useState(0)
   /**
    * @description 这里需要把用户信息塞到store中，未做，在想用不用rtk
    * @param {*} v 
@@ -24,7 +23,6 @@ const LoginView = memo(() => {
   return (
     <DocumentTitle title={"用户登录"}>
       <div className="login-container">
-        {num}
         <Form 
           form = {form} 
           onFinish={handleSubmit} 
